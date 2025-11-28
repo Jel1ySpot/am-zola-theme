@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">{{macros::t(key="home")}}</h1>
+        
+        {% set blog = get_section(path="blog/_index.md") %}
+        {% set music = get_section(path="music/_index.md") %}
+        {% set all_pages = blog.pages | concat(with=music.pages) | sort(attribute="date") | reverse %}
+
+        <div class="posts-grid">
+            {% for page in all_pages %}
+                {{ macros::post_card(page=page) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,23 @@
+base_url = "http://127.0.0.1:1111"
+title = "AMZola Theme Demo"
+default_language = "zh"
+compile_sass = true
+build_search_index = false
+
+taxonomies = [
+    {name = "tags"},
+]
+
+[markdown]
+highlight_code = true
+
+[extra]
+author = "Your Name"
+theme_color = "#ff2d55"
+background_colors = ["#5dc1dd", "#e9b32b", "#e32c84", "#2196f3"]
+
+# 可选：覆盖主题的默认翻译（根据 default_language 自动应用）
+# [extra.i18n]
+# home = "主页"  # 覆盖默认翻译
+# blog = "文章"
+# search = "搜一搜"

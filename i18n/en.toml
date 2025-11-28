@@ -1,0 +1,9 @@
+# English translations
+home = "Home"
+blog = "Blog"
+tags = "Tags"
+recent = "Recent"
+search = "Search"
+dark_mode = "Dark Mode"
+light_mode = "Light Mode"
+date_format = "%B %d, %Y"

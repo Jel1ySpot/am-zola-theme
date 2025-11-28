@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">{{macros::t(key=section.title)}}</h1>
+        <div class="post-content">
+            {{ section.content | safe }}
+        </div>
+
+        <div class="posts-grid">
+            {% for page in section.pages %}
+            {{ macros::post_card(page=page) }}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

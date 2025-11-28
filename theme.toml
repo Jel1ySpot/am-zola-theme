@@ -1,0 +1,5 @@
+name = "AMZola"
+description = "A Zola theme template"
+license = "MIT"
+homepage = "https://github.com/jel1yspot/AMZola"
+tags = ["blog", "minimal"]

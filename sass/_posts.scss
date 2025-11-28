@@ -1,0 +1,150 @@
+.posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.post-card {
+    display: flex;
+    flex-direction: row;
+    height: var(--card-height);
+    padding: 0 !important;
+    overflow: hidden;
+    align-items: center;
+    position: relative; // 为伪元素提供定位基准
+    cursor: pointer; // 鼠标悬停时显示点击手势
+    
+    .card-cover {
+        height: 100%;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+    }
+    
+    &:hover .card-cover img {
+        transform: scale(1.05);
+    }
+    
+    .card-content {
+        padding: 1rem 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: hidden;
+        
+        .post-title {
+            display: block;
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+            a.card-link {
+                text-decoration: none;
+                color: inherit;
+                transition: color 0.2s ease;
+                
+                // 使用伪元素覆盖整个卡片，使整个卡片可点击
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    z-index: 1;
+                }
+                
+                &:hover {
+                    color: var(--theme-color);
+                }
+            }
+        }
+        
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            display: -webkit-box;
+            line-clamp: 2; // Standard property
+            -webkit-line-clamp: 2; // Limit text lines
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+}
+
+.music-card {
+    // Inherit base styles, only specific overrides if needed
+    
+    .music-meta {
+        margin-top: auto;  // 置底
+        padding-top: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        
+        .artist {
+            display: block;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+        
+        .feat {
+            font-size: 0.85rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+    }
+    
+    .music-accent-bar-link {
+        // 正方形组件的容器
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) translateX(6rem);  // 初始位置在右侧外部
+        z-index: 20;
+        transition: transform 0.3s ease;
+    }
+    
+    .music-accent-bar {
+        // 正方形组件
+        width: var(--card-height);
+        height: var(--card-height);
+        background: var(--theme-color);
+        border-radius: var(--border-radius);
+        box-shadow: 
+            0 4px 6px -1px rgba(0, 0, 0, 0.2), 
+            0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        
+        .music-icon {
+            width: 85%;
+            height: 85%;
+            fill: white;
+            opacity: 0.95;
+            transition: all 0.3s ease;
+            display: block;
+            flex-shrink: 0;
+        }
+    }
+    
+    // 当鼠标悬停在卡片上时，正方形组件向左滑入
+    &:hover .music-accent-bar-link {
+        transform: translateY(-50%) translateX(2rem);  // 滑入到右侧边缘对齐
+    }
+}
