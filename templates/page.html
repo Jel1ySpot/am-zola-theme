@@ -6,7 +6,7 @@
     <header class="post-header card">
         {% if page.extra.cover %}
         <div class="card-cover">
-            <img src="{{ page.extra.cover }}" alt="{{ page.title }} cover">
+            <img src="{{ get_url(path=page.extra.cover) }}" alt="{{ page.title }} cover">
         </div>
         {% endif %}
         
