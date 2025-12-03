@@ -44,7 +44,7 @@ _Italic text_
 
 [Link to Google](https://google.com)
 
-![Placeholder Image](/Inabakumori_-_Watashi_wa_Ame.webp)
+![Placeholder Image](@/Inabakumori_-_Watashi_wa_Ame.webp)
 
 ## Blockquote
 
