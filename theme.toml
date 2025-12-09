@@ -1,5 +1,5 @@
 name = "AMZola"
-description = "A Zola theme template"
+description = "A Zola theme"
 license = "MIT"
-homepage = "https://github.com/jel1yspot/AMZola"
+homepage = "https://github.com/jel1yspot/am-zola-theme"
 tags = ["blog", "minimal"]
