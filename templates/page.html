@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% import "macros.html" as macros %}
+{% import "_macros.html" as macros %}
+{% import "_funcs.html" as func %}
 
 {% block content %}
 <article class="post">
@@ -16,7 +17,7 @@
                 {% if page.extra.author %}
                 <span class="author">{{ page.extra.author }}</span>
                 {% endif %}
-                <time datetime="{{ page.date }}">{{ macros::locale_date(date=page.date) }}</time>
+                <time datetime="{{ page.date }}">{{ func::locale_date(date=page.date) }}</time>
                 {% if page.taxonomies.tags %}
                 <span class="tags">
                     {% for tag in page.taxonomies.tags %}

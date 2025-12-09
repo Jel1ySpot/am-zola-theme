@@ -10,6 +10,7 @@ feat = "歌愛ユキ"
 cover = "/Inabakumori_-_Watashi_wa_Ame.webp"
 type = "music"
 music_link = "https://music.163.com/#/song?id=2151935380"
+netease_music_id = "2151935380"
 +++
 
 | Japanese (日本語歌詞)                   | Romaji (ローマ字)                                  |

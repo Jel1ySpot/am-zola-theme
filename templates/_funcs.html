@@ -1,0 +1,16 @@
+{% macro get_source_from_netease_music(id, level="") %}
+https://www.byfuns.top/api/1/?id={{ id }}{% if level %}&level={{ level }}{% endif %}
+{% endmacro get_source_from_netease_music %}
+
+{# 根据语言格式化日期的 macro #}
+{% macro locale_date(date) %}
+{%- set lang = lang | default(value=config.default_language) -%}
+{# 获取日期格式 #}
+{%- if config.extra.i18n and config.extra.i18n.date_format -%}
+{%- set format = config.extra.i18n.date_format -%}
+{%- else -%}
+{%- set theme_translations = load_data(path="i18n/" ~ lang ~ ".toml") -%}
+{%- set format = theme_translations.date_format | default(value="%Y-%m-%d") -%}
+{%- endif -%}
+{{ date | date(format=format) }}
+{% endmacro locale_date %}

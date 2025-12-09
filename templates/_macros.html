@@ -1,3 +1,5 @@
+{% import "_funcs.html" as func %}
+
 {# 获取翻译文本的 macro #}
 {% macro t(key) %}
 {%- set lang = lang | default(value=config.default_language) -%}
@@ -14,19 +16,6 @@
 {%- endif -%}
 {%- endif -%}
 {% endmacro t %}
-
-{# 根据语言格式化日期的 macro #}
-{% macro locale_date(date) %}
-{%- set lang = lang | default(value=config.default_language) -%}
-{# 获取日期格式 #}
-{%- if config.extra.i18n and config.extra.i18n.date_format -%}
-{%- set format = config.extra.i18n.date_format -%}
-{%- else -%}
-{%- set theme_translations = load_data(path="i18n/" ~ lang ~ ".toml") -%}
-{%- set format = theme_translations.date_format | default(value="%Y-%m-%d") -%}
-{%- endif -%}
-{{ date | date(format=format) }}
-{% endmacro locale_date %}
 
 {% macro card(title="", content="", class="") %}
 <div class="card {{ class }}">
@@ -59,9 +48,17 @@
         </div>
         {% else %}
         <div class="post-meta">
-            <time>{{ self::locale_date(date=page.date) }}</time>
+            <time>{{ func::locale_date(date=page.date) }}</time>
         </div>
         <p>{{ page.description | default(value=page.content | striptags | truncate(length=100)) }}</p>
+        {% endif %}
+
+        {% if page.taxonomies.tags %}
+        <span class="post-tags">
+            {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">#{{ tag }}</a>
+            {% endfor %}
+        </span>
         {% endif %}
     </div>
     
