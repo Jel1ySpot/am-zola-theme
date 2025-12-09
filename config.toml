@@ -14,7 +14,7 @@ highlight_code = true
 [extra]
 author = "Your Name"
 theme_color = "#ff2d55"
-background_colors = ["#5dc1dd", "#e9b32b", "#e32c84", "#2196f3"]
+background_colors = ["#206ee4", "#cda112", "#e822e5", "#ed1919"]
 
 # 可选：覆盖主题的默认翻译（根据 default_language 自动应用）
 # [extra.i18n]

@@ -7,10 +7,10 @@
 .post-card {
     display: flex;
     flex-direction: row;
-    height: var(--card-height);
+    height: auto;
     padding: 0 !important;
     overflow: hidden;
-    align-items: center;
+    align-items: stretch;
     position: relative; // 为伪元素提供定位基准
     cursor: pointer; // 鼠标悬停时显示点击手势
     
@@ -34,6 +34,7 @@
     
     .card-content {
         padding: 1rem 1.5rem;
+        padding-bottom: 3rem; // reserve space for tags positioned at bottom
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -113,6 +114,8 @@
 
 .music-card {
     // Inherit base styles, only specific overrides if needed
+    height: var(--card-height);
+    align-items: center;
     
     .music-meta {
         margin-top: auto;  // 置底
