@@ -47,12 +47,15 @@ jobs:
       - name: Sync theme from main
         run: |
           if [ ! -d "themes/am-zola-theme/.git" ]; then
-            echo "Missing themes/am-zola-theme repo" >&2
-            exit 1
+            rm -rf themes/am-zola-theme
+            git clone --depth 1 --branch main \
+              https://github.com/jel1yspot/am-zola-theme.git \
+              themes/am-zola-theme
+          else
+            git -C themes/am-zola-theme fetch origin main
+            git -C themes/am-zola-theme checkout main
+            git -C themes/am-zola-theme pull --ff-only origin main
           fi
-          git -C themes/am-zola-theme fetch origin main
-          git -C themes/am-zola-theme checkout main
-          git -C themes/am-zola-theme pull --ff-only origin main
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
