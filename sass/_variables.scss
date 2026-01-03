@@ -17,6 +17,9 @@
     --card-border: rgba(255, 255, 255, 0.1);
     --sidebar-hover: rgba(255, 255, 255, 0.15);
     --sidebar-search-bg: rgba(255, 255, 255, 0.08);
+    --sidebar-search-text: rgba(255, 255, 255, 0.7);
+    --sidebar-search-text-hover: #ffffff;
+    --post-card-hover-bg: rgba(255, 255, 255, 0.04);
     --sidebar-border: rgba(255, 255, 255, 0.15);
 }
 
@@ -31,6 +34,9 @@
     --card-bg: rgba(255, 255, 255, 0.25);
     --card-border: rgba(0, 0, 0, 0.1);
     --sidebar-hover: rgba(255, 255, 255, 0.1);
-    --sidebar-search-bg: rgba(255, 255, 255, 0.1);
+    --sidebar-search-bg: rgba(0, 0, 0, 0.06);
+    --sidebar-search-text: rgba(0, 0, 0, 0.6);
+    --sidebar-search-text-hover: #000000;
+    --post-card-hover-bg: rgba(0, 0, 0, 0.06);
     --sidebar-border: rgba(255, 255, 255, 0.1);
 }

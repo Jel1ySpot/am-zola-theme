@@ -2,10 +2,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("bg-canvas-container");
   if (!container) return;
 
-  // Get colors from config (passed via data attribute)
-  const configColors = JSON.parse(
-    container.dataset.colors || '["#b95ddd", "#e0e92b", "#2ce341", "#2196f3"]'
-  );
+  const parseColors = (value) => {
+    try {
+      const parsed = JSON.parse(value || "[]");
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      return [];
+    }
+  };
+
+  const fallbackColors = ["#b95ddd", "#e0e92b", "#2ce341", "#2196f3"];
+  const colors = JSON.parse(container.dataset.colors || '{"light":["#b95ddd", "#e0e92b", "#2ce341", "#2196f3"]}')
+
+  const resolveColors = (theme) => {
+    const themeColors = theme === "dark" ? colors.dark : colors.light;
+    if (themeColors.length >= 4) return themeColors;
+    if (legacyColors.length >= 4) return legacyColors;
+    console.log(themeColors)
+    return fallbackColors;
+  };
 
   // Scene setup
   const scene = new THREE.Scene();
@@ -28,11 +43,28 @@ document.addEventListener("DOMContentLoaded", () => {
     uResolution: {
       value: new THREE.Vector2(window.innerWidth, window.innerHeight),
     },
-    uColor1: { value: hexToRgb(configColors[0]) },
-    uColor2: { value: hexToRgb(configColors[1]) },
-    uColor3: { value: hexToRgb(configColors[2]) },
-    uColor4: { value: hexToRgb(configColors[3]) },
+    uColor1: { value: hexToRgb(fallbackColors[0]) },
+    uColor2: { value: hexToRgb(fallbackColors[1]) },
+    uColor3: { value: hexToRgb(fallbackColors[2]) },
+    uColor4: { value: hexToRgb(fallbackColors[3]) },
   };
+
+  const applyColors = (colors) => {
+    const palette = colors.length >= 4 ? colors : fallbackColors;
+    uniforms.uColor1.value = hexToRgb(palette[0]);
+    uniforms.uColor2.value = hexToRgb(palette[1]);
+    uniforms.uColor3.value = hexToRgb(palette[2]);
+    uniforms.uColor4.value = hexToRgb(palette[3]);
+  };
+
+  const currentTheme =
+    document.documentElement.getAttribute("data-theme") ||
+    (window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light");
+
+  applyColors(resolveColors(currentTheme));
 
   // Shader Material
   const material = new THREE.ShaderMaterial({
@@ -128,5 +160,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const height = window.innerHeight;
     renderer.setSize(width, height);
     uniforms.uResolution.value.set(width, height);
+  });
+
+  const themeObserver = new MutationObserver(() => {
+    const theme =
+      document.documentElement.getAttribute("data-theme") || "light";
+    applyColors(resolveColors(theme));
+  });
+
+  themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
   });
 });

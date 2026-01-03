@@ -1,14 +1,6 @@
 +++
-title = "Home"
+title = "home"
 sort_by = "date"
+page_template = "page.html"
 +++
 
-# Welcome to AMZola
-
-This is a demo site for the AMZola theme.
-
-## Features
-
-- Minimalist design
-- Fast and lightweight
-- Easy to customize
