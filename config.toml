@@ -9,7 +9,7 @@ description = ""
 default_language = "en"
 
 # Use this Theme.
-# theme = "am-zola-theme"
+theme = "am-zola-theme"
 
 # When set to "true", the generated HTML files are minified.
 minify_html = false
