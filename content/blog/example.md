@@ -5,7 +5,6 @@ authors = ["Admin User"]
 [taxonomies]
 tags = ["design", "notes"]
 [extra]
-cover = "/images/example-cover.jpg"
 description = "A short example post used to demonstrate list and detail layouts."
 +++
 
