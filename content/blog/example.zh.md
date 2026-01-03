@@ -5,7 +5,6 @@ authors = ["管理员"]
 [taxonomies]
 tags = ["design", "notes"]
 [extra]
-cover = "/images/example-cover.jpg"
 description = "用于展示列表与详情布局的示例文章。"
 +++
 
