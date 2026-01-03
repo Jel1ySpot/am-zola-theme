@@ -39,6 +39,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+          ref: preview
+      - name: Sync theme from main
+        run: |
+          if [ ! -d "theme/am-zola-theme/.git" ]; then
+            echo "Missing theme/am-zola-theme repo" >&2
+            exit 1
+          fi
+          git -C theme/am-zola-theme fetch origin main
+          git -C theme/am-zola-theme checkout main
+          git -C theme/am-zola-theme pull --ff-only origin main
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
