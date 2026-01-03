@@ -1,5 +1,5 @@
 +++
-title = "音乐"
+title = "music"
 sort_by = "date"
 paginate_by = 10
 +++

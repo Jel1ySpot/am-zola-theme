@@ -1,5 +1,5 @@
 +++
-title = "博客"
+title = "blog"
 sort_by = "date"
 paginate_by = 10
 +++
