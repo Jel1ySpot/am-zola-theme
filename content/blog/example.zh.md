@@ -1,7 +1,7 @@
 +++
 title = "示例文章"
 date = 2024-06-01
-author = "管理员"
+authors = ["管理员"]
 [taxonomies]
 tags = ["design", "notes"]
 [extra]

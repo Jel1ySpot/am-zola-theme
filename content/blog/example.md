@@ -1,7 +1,7 @@
 +++
 title = "Example Post"
 date = 2024-06-01
-author = "Admin User"
+authors = ["Admin User"]
 [taxonomies]
 tags = ["design", "notes"]
 [extra]

@@ -1,7 +1,7 @@
 +++
 title = "私は雨"
 date = 2024-05-19
-author = "稲葉曇"
+authors = ["稲葉曇"]
 [taxonomies]
 tags = ["music", "vocaloid"]
 [extra]
